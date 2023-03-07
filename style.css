@@ -12,8 +12,12 @@
 :root {
   --primary-color: rgb(0, 0, 0);
   --bcg-primary-color: rgb(247, 247, 182);
+  --bcg-secondary-color: rgb(227, 182, 247);
   --primary-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  --inset-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  --dotted-border: 3px dotted black;
 }
 
 body {
@@ -70,17 +74,26 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 1fr;
+  height: 100%;
+  width: 100%;
+  margin-top: 23px;
+  align-items: start;
+  text-align: center;
+  justify-items: center;
 }
 
 .player-box {
   height: 150px;
   width: 150px;
-  border: 1px black solid;
+  box-shadow: var(--primary-box-shadow);
 }
 
 .playing-mark {
   height: 100px;
+  width: 100%;
   font-size: 4.5rem;
+  border: var(--dotted-border);
+  background-color: var(--bcg-secondary-color);
 }
 
 #gameboard {
@@ -89,11 +102,16 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  border: 1px black solid;
+  box-shadow: var(--inset-box-shadow);
+  border: var(--dotted-border);
 }
 
 .square {
-  border: 1px black solid;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border: var(--dotted-border);
+  color: var(--bcg-secondary-color);
 }
 
 .hide {
