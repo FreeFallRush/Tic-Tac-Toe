@@ -31,3 +31,20 @@ body {
   padding-bottom: 15px;
   box-shadow: var(--primary-box-shadow);
 }
+
+#game {
+  width: 100%;
+}
+
+#gameboard {
+  width: 450px;
+  height: 450px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px black solid;
+}
+
+.square {
+  border: 1px black solid;
+}
