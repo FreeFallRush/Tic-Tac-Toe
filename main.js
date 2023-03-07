@@ -81,6 +81,35 @@ const displayController = (() => {
     boardContainer.appendChild(square);
   });
 
+  replayBtn.addEventListener("click", () => {
+    // removing classes that were added in previous game
+    const squares = document.querySelectorAll("[data-index]");
+    squares.forEach((square) => {
+      square.style.pointerEvents = "auto";
+      square.innerHTML = "";
+      square.classList.remove("winner");
+      square.classList.remove("draw");
+    });
+
+    gameBoard.resetBoard();
+    game.resetGame();
+    resetDisplay();
+    hideBoard();
+    document.querySelector("h4").classList.remove("win");
+    statusText.textContent = `Try placing 3 marks in a horizontal, 
+  vertical, or diagonal row.`;
+  });
+
+  // removing all the squares
+  function resetDisplay() {
+    Array.from(boardContainer.children).forEach((el) => {
+      while (el.firstChild) {
+        el.removeChild(el.lastChild);
+      }
+    });
+    showResult("");
+  }
+
   //mark choice that will set the players
   choices.forEach((choice) => {
     choice.addEventListener("click", (e) => {
