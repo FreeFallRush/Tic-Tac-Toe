@@ -40,3 +40,38 @@ const gameBoard = (() => {
 
   return { setBoard, getBoard, resetBoard, getWinningCombos };
 })();
+
+// displayController module to control the interface
+const displayController = (() => {
+  const boardContainer = document.getElementById("gameboard");
+  const choices = document.querySelectorAll(".choice-box");
+  const replayBtn = document.getElementById("replay-btn");
+  const statusText = document.querySelector("h4");
+
+  function showBoard() {
+    document.getElementById("modal-choice").classList.add("hidden");
+    document.getElementById("game").classList.remove("hide");
+  }
+
+  function hideBoard() {
+    document.getElementById("modal-choice").classList.remove("hidden");
+    document.getElementById("game").classList.add("hide");
+  }
+
+  // generating the 3x3 board
+  gameBoard.getBoard().forEach((_el, index) => {
+    let square = document.createElement("div");
+    square.classList.add("square");
+    square.dataset.index = index;
+    boardContainer.appendChild(square);
+  });
+
+  //mark choice that will set the players
+  choices.forEach((choice) => {
+    choice.addEventListener("click", (e) => {
+      let mark = e.target.dataset.mark;
+
+      showBoard();
+    });
+  });
+})();
