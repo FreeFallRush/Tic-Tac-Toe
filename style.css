@@ -32,8 +32,38 @@ body {
   box-shadow: var(--primary-box-shadow);
 }
 
+#header {
+  grid-area: header;
+}
+#player-1 {
+  grid-area: player-1;
+}
+#player-2 {
+  grid-area: player-2;
+}
+#announcement {
+  grid-area: announcement;
+}
+#gameboard {
+  grid-area: gameboard;
+}
+
+#replay {
+  grid-area: replay;
+}
+
 #game {
+  height: 650px;
   width: 100%;
+  display: grid;
+  grid-template-areas:
+    "header header header header header"
+    "player-1 announcement announcement announcement player-2"
+    "player-1 replay replay replay player-2"
+    "player-1 gameboard gameboard gameboard player-2";
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
 .player {
@@ -64,4 +94,8 @@ body {
 
 .square {
   border: 1px black solid;
+}
+
+.hide {
+  display: none;
 }
