@@ -47,6 +47,21 @@ const displayController = (() => {
   const choices = document.querySelectorAll(".choice-box");
   const replayBtn = document.getElementById("replay-btn");
   const statusText = document.querySelector("h4");
+  statusText.textContent = `Try placing 3 marks in a horizontal, 
+  vertical, or diagonal row.`;
+
+  let humanPlayerBox = document
+    .getElementById("player-1")
+    .getElementsByClassName("playing-mark")[0];
+  let humanPlayerScore = document
+    .getElementById("player-1")
+    .getElementsByClassName("player-score")[0];
+  let computerPlayerBox = document
+    .getElementById("player-2")
+    .getElementsByClassName("playing-mark")[0];
+  let computerPlayerScore = document
+    .getElementById("player-2")
+    .getElementsByClassName("player-score")[0];
 
   function showBoard() {
     document.getElementById("modal-choice").classList.add("hidden");
@@ -69,9 +84,92 @@ const displayController = (() => {
   //mark choice that will set the players
   choices.forEach((choice) => {
     choice.addEventListener("click", (e) => {
-      let mark = e.target.dataset.mark;
-
-      showBoard();
+      if (!game.getPlay() && !game.isGameOver()) {
+        let mark = e.target.dataset.mark;
+        game.setPlayers(mark);
+        showBoard();
+      }
     });
   });
+
+  return {
+    humanPlayerBox,
+    computerPlayerBox,
+    humanPlayerScore,
+    computerPlayerScore,
+  };
+})();
+
+//game module
+const game = (() => {
+  let player;
+  let computer;
+  let currentPlayer;
+  let play = false;
+  let gameover = false;
+
+  function resetGame() {
+    player = null;
+    computer = null;
+    play = false;
+    gameover = false;
+    currentPlayer = null;
+  }
+
+  let humanScore = 0;
+  let computerScore = 0;
+
+  function addHumanScore() {
+    humanScore++;
+  }
+
+  function addComputerScore() {
+    computerScore++;
+  }
+
+  function getHumanScore() {
+    return humanScore;
+  }
+
+  function getComputerScore() {
+    return computerScore;
+  }
+
+  // setting players after human mark choice
+  function setPlayers(mark) {
+    player = Player(mark);
+    computer = Player(mark === "X" ? "O" : "X");
+    if (mark === "X") {
+      displayController.humanPlayerBox.textContent = "X";
+      displayController.computerPlayerBox.textContent = "O";
+    } else {
+      displayController.humanPlayerBox.textContent = "O";
+      displayController.computerPlayerBox.textContent = "X";
+    }
+
+    displayController.humanPlayerScore.textContent = `Your Score: ${getHumanScore()}`;
+    displayController.computerPlayerScore.textContent = `Bot Score: ${getComputerScore()}`;
+    play = true;
+    currentPlayer = player;
+  }
+
+  function getCurrentPlayer() {
+    return currentPlayer;
+  }
+
+  function getPlay() {
+    return play;
+  }
+
+  function isGameOver() {
+    return gameover;
+  }
+
+  return {
+    resetGame,
+    setPlayers,
+    getCurrentPlayer,
+    getPlay,
+    isGameOver,
+  };
 })();
