@@ -196,7 +196,7 @@ h4 {
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
 
 @media all and (max-width: 768px) {
