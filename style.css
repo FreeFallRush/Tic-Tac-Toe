@@ -131,18 +131,6 @@ h4 {
   text-shadow: var(--winner-text-shadow);
 }
 
-.winner {
-  background-color: var(--primary-color);
-  text-shadow: var(--result-text-shadow);
-  border: var(--result-dotted-border);
-}
-
-.draw {
-  background-color: var(--bcg-draw-color);
-  border: var(--result-dotted-border);
-  text-shadow: var(--result-text-shadow);
-}
-
 #replay-btn {
   width: 150px;
   height: 40px;
@@ -221,6 +209,18 @@ h4 {
 
 .choice-box:hover {
   color: var(--bcg-primary-color);
+}
+
+.winner {
+  background-color: var(--primary-color);
+  text-shadow: var(--result-text-shadow);
+  border: var(--result-dotted-border);
+}
+
+.draw {
+  background-color: var(--bcg-draw-color);
+  border: var(--result-dotted-border);
+  text-shadow: var(--result-text-shadow);
 }
 
 .hidden {
