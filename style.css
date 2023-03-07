@@ -152,3 +152,77 @@ h4 {
 .hide {
   display: none;
 }
+
+@media all and (max-width: 768px) {
+  body {
+    width: 100%;
+    height: auto;
+  }
+
+  #header {
+    height: auto;
+    text-align: center;
+  }
+
+  #game {
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "player-1  player-2"
+      "announcement announcement"
+      "replay replay "
+      "gameboard gameboard ";
+    justify-items: center;
+    align-items: center;
+  }
+
+  .player {
+    height: auto;
+    align-items: center;
+    border: 1px center black;
+    height: 200px;
+  }
+
+  .player-box {
+    margin-top: 20px;
+    width: 70%;
+  }
+
+  #announcement {
+    width: 90%;
+    height: auto;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  #replay {
+    height: 70px;
+    padding-top: 20px;
+  }
+
+  #gameboard {
+    margin-top: 20px;
+    width: 80%;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: auto;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .square {
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+  }
+}
