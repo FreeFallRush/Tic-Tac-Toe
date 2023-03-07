@@ -149,6 +149,52 @@ h4 {
   color: var(--bcg-secondary-color);
 }
 
+#modal-choice {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  margin-top: 150px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: var(--bcg-primary-color);
+}
+
+.modal-content {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 40%;
+  position: relative;
+  padding: 0;
+  margin: auto;
+  border: var(--dotted-border);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.choice-box {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.choice-box:hover {
+  color: var(--bcg-primary-color);
+}
+
+.hidden {
+  display: none;
+}
+
 .hide {
   display: none;
 }
@@ -161,6 +207,11 @@ h4 {
 
   #header {
     height: auto;
+    text-align: center;
+  }
+
+  .modal-content {
+    width: 80%;
     text-align: center;
   }
 
